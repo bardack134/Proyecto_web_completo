@@ -1,0 +1,56 @@
+
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %} 
+
+
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
+
+   <!-- Heading -->
+   <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'ProyectoWebApp/img/principal.jpg' %}" alt="">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-upper">Puntuality</span>
+            <span class="section-heading-lower">The best stock </span>
+          </h2>
+          <p class="mb-3">At your doorstep in less than 48 hours with standard shipping. In less than 24 hours with express shipping.
+          </p>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+    <!-- Message -->
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Total commitment</span>
+                <span class="section-heading-lower">Guaranteed</span>
+              </h2>
+              <p class="mb-0">With over 75 years of experience behind us, at Order Management, we have the knowledge and tools necessary to deliver any item to your doorstep with punctuality and professionalism.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endblock %}

@@ -1,0 +1,115 @@
+<!-- Cargar archivos estáticos utilizando la etiqueta de plantilla {% load static %} -->
+
+<html>
+<head>
+  <!-- Cargar estilos de Bootstrap desde los archivos estáticos -->
+  <link href="{% static 'ProyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Cargar Fuentes desde Google Fonts API -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Cargar estilos CSS personalizados desde archivos estáticos -->
+  <link href="{% static 'ProyectoWebApp/css/gestion.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Encabezado del sitio y enlaces de inicio/cierre de sesión de usuario -->
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-lower">Order Management</span>
+  </h1>
+  <div style="color: white; text-align: right; margin-right: 120px;">
+    {% if user.is_authenticated %}
+    We hope you have a great experience! <br>{{ user.username}} <br>
+      <a href="{% url 'cerrar_sesion' %}" style="color: white;">Logout</a>
+    {% else %}
+      <!-- Mostrar enlaces de inicio de sesión y registro si el usuario no está autenticado -->
+      <a href="{% url 'login' %}" style="color: white;">Login</a> <br>
+      <a href="{% url 'autenticacion' %}" style="color: white;">Register</a>
+    {% endif %}
+  </div>
+
+  <!-- Barra de navegación -->
+   <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'Home' %}">Gestión de Pedidos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mx-auto">
+
+        <li class="nav-item {% if request.path == '/' %}active {% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'Home' %}">Home</a>
+        </li>
+        <li class="nav-item {% if request.path == '/servicios/' %}active {% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'Servicios' %}">Services</a>
+        </li>
+        <li class="nav-item {% if request.path == '/tienda/' %}active {% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'Tienda' %}">Store</a>
+        </li>
+        <li class="nav-item {% if request.path == '/contacto/' %}active {% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'Contacto' %}">Contact</a>
+        </li>
+        <li class="nav-item {% if request.path|slice:':6' == '/blog/' %}active {% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'Blog' %}">Blog</a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+
+    
+    
+
+  
+    
+  
+    
+    
+    
+    
+    
+    
+    
+  
+
+  <!-- Contenido que puede cambiar según la página -->
+  {% block content %} 
+  {% endblock %}
+
+  <!-- Sección de pie de página -->
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <!-- Enlaces a redes sociales utilizando iconos de Font Awesome -->
+      <p class="m-0">
+        <a href="#" class="link">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+        <!-- ... Repetir los otros enlaces a redes sociales ... -->
+      </p>
+      <!-- Enlaces de pie de página -->
+      <p class="m-0 mbt">
+        <a href="sample.html" class="link">Privacy Policy</a> ·
+        <a href="sample.html" class="link">Legal Notice</a> ·
+        <a href="sample.html" class="link">Cookies</a>
+        <p style="color: white;">created by Ricardo Antonio Gomez Villalobos</p>
+      </p>
+      <!-- Aviso de derechos de autor -->
+      <p class="m-0 mbt1">&copy; Gestión de Pedidos 2020</p>
+    </div>
+  </footer>
+
+  <!-- Cargar jQuery y JavaScript de Bootstrap desde archivos estáticos -->
+  <script src="{% static 'ProyectoWebApp/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'ProyectoWebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>
