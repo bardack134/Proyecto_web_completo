@@ -1,0 +1,30 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %} 
+<div>
+  <!-- Loop through the list of 'servicios' -->
+  {% for i in servicios %}
+
+    <!-- Section for displaying each service -->
+    <section class="page-section clearfix" >
+      <div class="container" >
+        <div class="intro" >
+
+          <!-- Display service image -->
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{i.imagen.url}}" alt="" style="width: 45%;">
+          <div class="intro-text left-0 text-center bg-faded p-5 rounded"  >
+            
+            <!-- Display service title and content -->
+            <h2 class="section-heading mb-4"  >
+              <span class="section-heading-lower">{{i.titulo}}</span>
+              <span class="section-heading-upper">{{i.contenido}} </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+</div>
+{% endblock %}

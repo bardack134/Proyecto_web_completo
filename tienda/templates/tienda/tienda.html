@@ -1,0 +1,77 @@
+<!-- Esta línea indica que este archivo extiende (hereda) el contenido del archivo base.html, que generalmente contiene la estructura común del sitio. -->
+{% extends "ProyectoWebApp/base.html" %}
+
+<!-- Esta línea carga la etiqueta static de Django, lo que permite usar archivos estáticos como hojas de estilo CSS o scripts JS en la plantilla. -->
+{% load static %}
+
+<!--  Estas etiquetas delimitan el bloque de contenido específico de esta plantilla. En el archivo base.html, hay otra etiqueta similar que define dónde se insertará este contenido específico. -->
+{% block content %} 
+
+  <!-- ENCABEZADO NIVEL 1 -->
+  <h1 class="text-center display-4" style="color: bisque; text-align: center;">Buy Some Of Ours Products</h1>
+
+  <!-- Primer contenedor con texto centrado  -->
+  <div class="container text-center">
+
+    <!-- Contenedor del carrito de compras -->
+    <div style="float: right;">
+     
+      {% include 'carro/widget.html' %}
+    </div>
+
+    <!-- Dentro del contenedor, creamos una fila (row). Una fila en Bootstrap es un contenedor que permite distribuir contenido en varias columnas. -->
+    <div class="row">
+
+      <!-- Bucle "for" que recorre todos los elementos de la lista llamada "producto". Cada elemento de la lista se almacenará temporalmente en la variable "i" durante cada iteración del bucle. -->
+      {% for i in producto %}
+
+        <!-- Dentro del bucle, creamos una columna (col) que ocupará 4 de las 12 columnas disponibles en dispositivos medianos o mayores (col-md-3). La clase "mb-5" añade un margen en la parte inferior de la columna, creando espacio entre cada card. -->
+        <div class="col-lg-4 mb-5">
+
+          <!-- Dentro de la columna, creamos una card (tarjeta). La card tendrá un borde de color azul claro ("border-info") y su contenido estará centrado horizontalmente.  -->
+          <div class="card border-info text-center">
+
+            <!-- Dentro de la card, añadimos una imagen como encabezado ("card-img-top") que se obtendrá de la URL de la imagen almacenada en el campo "imagen" del elemento actual de la lista "producto" (usando "{{i.imagen.url}}"). -->
+            <img src="{{i.imagen.url}}" class="card-img-top" alt="" width="200" height="200">
+
+            <!-- Dentro de la card, creamos un contenedor (div) que contendrá el cuerpo de la card. Aquí se mostrarán el nombre, la categoría, el precio y la disponibilidad del producto. -->
+            <div class="card-body">
+
+              <!-- Dentro del cuerpo de la card, añadimos un encabezado de nivel 5 (h5) con el nombre del producto (que se obtendrá de la variable "i"). -->
+              <h5 class="card-title">{{i.nombre}}</h5>
+
+              <!-- Después del encabezado, se muestran tres párrafos con la categoría, el precio y la disponibilidad del producto (obtenidos también de la variable "i"). -->
+              <p class="card-text">{{i.categoria}}</p>
+              <p class="card-text">${{i.precio}}</p>
+
+              <!-- Comprobamos si la variable "i.disponibilidad" es verdadera (True). -->
+              <p class="card-text">
+                {% if i.disponibilidad %}
+                  Available
+
+
+                  
+                <!-- Si la variable "i.disponibilidad" es falsa (False), se ejecuta el bloque "else". -->
+                {% else %}
+                  No Available
+                {% endif %}
+              </p>
+
+               <!-- La siguiente línea de código crea un contenedor (div) con la clase "card-footer" que se mostrará en la parte inferior de la tarjeta (card). -->
+               
+                <div class="d-flex justify-content-center">
+                  <a href="{% url 'carro:agregar' i.id %}" class="btn btn-success" style="margin: auto;">add to car</a>
+                </div>
+              
+              
+              
+
+            </div>
+  
+        
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
