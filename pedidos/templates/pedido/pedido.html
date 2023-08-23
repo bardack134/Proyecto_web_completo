@@ -1,0 +1,24 @@
+{% extends "ProyectoWebApp/base.html" %} <!-- Extiende desde la plantilla base "base.html". -->
+
+{% load static %} <!-- Carga los archivos estáticos como CSS y JavaScript. -->
+
+{% block content %} <!-- Define un bloque llamado "content". -->
+
+<div class="container"> <!-- Crea un contenedor para centrar y alinear el contenido. -->
+  <div class="row justify-content-center"> <!-- Crea una fila y centra horizontalmente su contenido. -->
+    <div class="col-md-6"> <!-- Crea una columna que ocupa 6 unidades en dispositivos medianos y grandes. -->
+
+      <div class="text-center mt-5 mb-3"> <!-- Centra el contenido y agrega margen superior e inferior. -->
+        <h1 class="display-6" style="color: white; white-space: nowrap;">Pedido realizado exitosamente</h1> <!-- Título en una línea, centrado y con color blanco. -->
+
+        <p class="lead" style="color: white;">Se ha enviado un correo con la información de tu pedido</p> <!-- Párrafo destacado con color blanco. -->
+        <p class="lead" style="color: white;">Para realizar el pago, podrás hacerlo vía PayPal</p> <!-- Párrafo destacado con color blanco. -->
+
+      
+      </div>
+        
+    </div>
+  </div>
+</div>
+
+{% endblock %} <!-- Cierra el bloque "content". -->

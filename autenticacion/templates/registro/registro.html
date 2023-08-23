@@ -1,0 +1,28 @@
+<!--  Indica que esta plantilla extiende el contenido de la plantilla base "ProyectoWebApp/base.html". -->
+{% extends "ProyectoWebApp/base.html" %}
+
+<!-- Cargamos las etiquetas estáticas para poder acceder a los archivos estáticos (como CSS y JavaScript). -->
+{% load static %}
+
+<!-- Cargamos el paquete de etiquetas de Crispy Forms para dar estilo al formulario -->
+{% load crispy_forms_tags %}
+
+{% block content %} 
+  <!-- Inicio del formulario de registro -->
+  <form method="post" style="color: whitesmoke;">
+    
+    {% csrf_token %}  <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
+    
+    <div style="width: 40%; margin:auto">
+      <!-- Usamos Crispy Forms para dar estilo al formulario -->
+      {{ form|crispy }}
+      
+      <!-- Botón de envío del formulario -->
+      <button type="submit" class="btn btn-success">Registrate</button>
+    </div>
+  </form>
+  <!-- Fin del formulario de registro -->
+  
+  <!-- Finaliza el bloque de contenido -->
+  {% endblock %}
+

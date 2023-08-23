@@ -1,0 +1,37 @@
+
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %} 
+
+
+
+  
+  <p style="color:white">". "</p>
+  
+  
+<!--  Bootstrap recomienda envolver tu contenido en un contenedor para un diseño más limpio y centrado en dispositivos grandes. Esto crea un espacio alrededor del contenido. -->
+<div class="container">
+
+  <!--  Crea una fila y utiliza justify-content-center para centrar horizontalmente los elementos dentro de la fila. -->
+<div class="row justify-content-center">
+
+  <!-- hace que el contenido esté centrado y se ajuste bien en la mayoría de los dispositivos. -->
+  <div class="col-md-6">
+
+      <!-- <div class="text-center mt-5">: Agrega una clase de Bootstrap para centrar el contenido del div y mt-5 para agregar un margen superior. -->
+    <div class="text-center mt-5">
+      <h1 class="display-4" style="color: white;">¡Gracias por unirte! </h1>
+      
+      <!-- Agrega una clase de Bootstrap para darle estilo a tu párrafo y hacerlo destacar ligeramente. -->
+      <p class="lead" style="color: white;"> Tu registro se ha completado con éxito </p>
+      <p class="lead" style="color: white;"> ¡Bienvenido a nuestra comunidad!</p>
+    </div>
+  </div>
+</div>
+</div>
+ 
+
+  
+  {% endblock %}

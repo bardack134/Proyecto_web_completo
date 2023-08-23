@@ -1,0 +1,39 @@
+
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %} 
+
+
+<h1 style="color: bisque; text-align: center;">Contact us</h1>
+
+
+
+<!-- Django  NO CREA LA ETIQUETA FORM, POR ESO TENEMOS QUE CREARLA MANUALMENTE NOSOTROS -->
+
+
+<div class="contenedorFormulario">
+
+  {% if 'gracias'  in request.GET %}
+  
+  <p style="color:white"></p>
+  
+  {% endif %}
+
+  <form  action="" method="POST">{% csrf_token %}
+  
+  
+    
+      <table style="color:white; margin:20px auto;">
+        
+        {{ miformulario.as_table}}
+        
+      </table>
+      
+      <input type="submit" value="Send" style="width: 150px;">   
+      
+    </form>
+</div>
+  
+  {% endblock %}

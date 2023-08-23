@@ -1,0 +1,32 @@
+<!--  Indica que esta plantilla extiende el contenido de la plantilla base "ProyectoWebApp/base.html". -->
+{% extends "ProyectoWebApp/base.html" %}
+
+<!-- Cargamos las etiquetas estáticas para poder acceder a los archivos estáticos (como CSS y JavaScript). -->
+{% load static %}
+
+<!-- Cargamos el paquete de etiquetas de Crispy Forms para dar estilo al formulario -->
+{% load crispy_forms_tags %}
+
+<!-- Estos bloques delimitan el contenido específico de esta plantilla que será renderizado dentro del bloque content de la plantilla base. -->
+{% block content %} 
+
+  <!-- Creamos un formulario de inicio de sesión -->
+  <form method="post" style="color: whitesmoke;">
+    
+     <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
+    {% csrf_token %} 
+    
+    <div style="width: 40%; margin:auto">
+
+      <!-- Usamos Crispy Forms para dar estilo al formulario -->
+
+      {{ form|crispy }}
+      
+      <!-- Agregamos un botón para enviar el formulario -->
+      <button type="submit" class="btn btn-success">Iniciar sesión</button>
+    </div>
+  </form>
+  
+  <!-- Finaliza el bloque de contenido -->
+  {% endblock %}
+

@@ -1,0 +1,44 @@
+
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %} 
+<div>
+  {% for i in posts %}
+  <section class="blog-post mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="blog-post-content bg-faded p-5 rounded text-center">
+            <img class="img-fluid mb-3 mb-lg-0 rounded custom-img-size" src="{{ i.imagen.url }}" alt="{{ i.titulo }}">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-lower">{{ i.titulo }}</span>
+            </h2>
+            <p>{{ i.contenido }}</p>
+            <div class="blog-post-author">
+              <p class="font-italic">Autor: {{ i.autor }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+  
+
+</div>
+
+  <section>
+    <section>
+      <div style="width: 70%; color: white; margin: auto; text-align: center;">
+          Categorías:
+          {% for categoria in categorias %}
+
+          <a href="{% url 'categoria' categoria.id %}" class="linksCategorias">{{ categoria.nombre }}</a>            
+             
+          {% endfor %}
+      </div>
+  </section>
+  </section>
+  {% endblock %}
